@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "stonks"
+version = "0.1.0"
+description = ""
+authors = ["Andrew Neher <andrew.neher1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Flask = "^3.0.3"
+numpy = "^2.2.1"
+alpaca-py = "^0.35.1"
+pandas = "^2.2.3"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+flake8 = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
