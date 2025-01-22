@@ -1,7 +1,7 @@
-from dataclasses import dataclass
 import os
-import requests
+from dataclasses import dataclass
 
+import requests
 
 BASE_ASSET_URL = "https://api.alpaca.markets/v2/assets"
 
@@ -17,18 +17,27 @@ class ExchangeOptions:
     OTC = "OTC"
 
 
+@dataclass
+class AssetClass:
+    us_equity = "us_equity"
+    us_option = "us_option"
+    crypto = "crypto"
+
+
 class AuthSession(requests.Session):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.headers.update({
-            "APCA-API-KEY-ID": os.getenv("ALPACA_KEY"),
-            "APCA-API-SECRET-KEY": os.getenv("ALPACA_SECRET")
-        })
+        self.headers.update(
+            {
+                "APCA-API-KEY-ID": os.getenv("ALPACA_KEY"),
+                "APCA-API-SECRET-KEY": os.getenv("ALPACA_SECRET"),
+            }
+        )
 
 
-def get_all_asset_info_by_exchange(exchange: ExchangeOptions = ExchangeOptions.NYSE):  # NOQA: E501
+def get_all_asset_info_by_exchange(exchange: ExchangeOptions = ExchangeOptions.NYSE):
     with AuthSession() as session:
-        data = session.get(f"{BASE_ASSET_URL}?status=active&exchange={exchange}")  # NOQA: E501
+        data = session.get(f"{BASE_ASSET_URL}?status=active&exchange={exchange}")
     return data
 
 

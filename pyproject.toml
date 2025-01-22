@@ -11,6 +11,12 @@ Flask = "^3.0.3"
 numpy = "^2.2.1"
 alpaca-py = "^0.35.1"
 pandas = "^2.2.3"
+pillow = "^11.1.0"
+flask-sqlalchemy = "^3.1.1"
+python-dotenv = "^1.0.1"
+requests = "^2.32.3"
+setuptools = "^75.8.0"
+flask-alembic = "^3.1.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.10.0"
