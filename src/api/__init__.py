@@ -26,13 +26,13 @@ def create_app(test_config=None):
 
     _ = init_db()
 
-    from . import auth
+    from . import auth, main
 
     app.register_blueprint(auth.bp)
+    app.register_blueprint(main.bp)
 
-    # a simple page that says hello
-    @app.route("/hello")
-    def hello():
+    @app.route("/")
+    def index():
         return "Hello, World!"
 
     return app
